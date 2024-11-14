@@ -1,8 +1,20 @@
 var Toy = require('../models/toy');
 // List of all Costumes
-exports.toy_list = function(req, res) {
-res.send('NOT IMPLEMENTED: Toy list');
-};
+// exports.toy_list = function(req, res) {
+// res.send('NOT IMPLEMENTED: Toy list');
+// };
+// List of all Costumes
+exports.toy_list = async function(req, res) {
+    try{
+    theToy = await Toy.find();
+    res.send(theToy);
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+    };
+    
 // for a specific Costume.
 exports.toy_detail = function(req, res) {
 res.send('NOT IMPLEMENTED: Toy detail: ' + req.params.id);
