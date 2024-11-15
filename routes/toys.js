@@ -1,17 +1,21 @@
 var express = require('express');
 var router = express.Router();
+var toy_controller = require('../controllers/toys');
 
-/* Sample toy data */
-const toys = [
-    { name: 'Teddy Bear', type: 'Stuffed Animal', age_range: '3-6 years' },
-    { name: 'Lego Set', type: 'Building Blocks', age_range: '5-12 years' },
-    { name: 'Action Figure', type: 'Figurine', age_range: '4-10 years' },
-    { name: 'Iron man', type: 'Action', age_range: '10-15 years' }
-];
 
-// Update the route to just '/' for the toys
-router.get('/', (req, res) => {
-    res.render('toys', { title: 'SearchResults', toys: toys });
-});
+router.get('/', toy_controller.toy_list);
+
+router.post('/create', toy_controller.toy_create_post);
+
+router.get('/:id', toy_controller.toy_detail);
+
+// router.get('/:id/update', toy_controller.toy_update_get);
+
+// router.get('/:id/delete', toy_controller.toy_delete_get);
+
+// router.post('/:id/update', toy_controller.toy_update_post);
+
+// router.post('/:id/delete', toy_controller.toy_delete_post);
+
 
 module.exports = router;
