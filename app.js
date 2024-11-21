@@ -31,8 +31,8 @@ const toysRouter = require('./routes/toys');
 // Schema definition
 const toyschema = new mongoose.Schema({
   name: String,
-  year: Number,
-  inventor: String
+  toy_type: String,
+  age_range: Number
 });
  
 const Toy = mongoose.models.Toy || mongoose.model('Toy', toyschema);

@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  h1= title
+  form(id='ToyForm', action="/resource/toys", method="POST")
+    div.form-group
+      label.toyAttr(for='name') Toy Name
+      input#name(type='text', name='name')
+    div.form-group
+      label.toyAttr(for='toy_type') Type
+      input#toy_type(type='text', name='toy_type')
+    div.form-group
+      label.toyAttr(for='age_range') Age range
+      input#age_range(type='number', name='age_range')
+    input(type="submit")
+  script.
+    document.forms['ToyForm'].addEventListener('submit', (event) => {
+      event.preventDefault();
+      fetch(event.target.action, {
+        method: 'POST',
+        body: new URLSearchParams(new FormData(event.target))
+      }).then((resp) => {
+        return resp.json();
+      }).then((body) => {
+        alert("Save succeeded");
+      }).catch((error) => {
+        alert("Save failed " + error);
+      });
+    });
