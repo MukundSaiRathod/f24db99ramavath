@@ -56,10 +56,10 @@ router.get('/toys:id', toy_controller.toy_detail);
 
 router.get('/detail', toy_controller.toy_view_one_Page);
 
-router.get('/create', toy_controller.toy_create_Page);
+router.get('/create',secured, toy_controller.toy_create_Page);
 
 router.get('/update',secured,toy_controller.toy_update_Page);
 
-router.get('/delete', toy_controller.toy_delete_Page);
+router.get('/delete',secured, toy_controller.toy_delete_Page);
 
 module.exports = router;
